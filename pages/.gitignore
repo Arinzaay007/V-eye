@@ -1,2 +1,3 @@
-const nextConfig = { reactStrictMode: true }
-module.exports = nextConfig
+node_modules
+.next
+.env.local
