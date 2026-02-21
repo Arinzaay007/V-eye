@@ -50,9 +50,19 @@ function PredCard({ pred }) {
       <div style={{ fontSize: 11, color: '#50506e', marginBottom: 4, fontFamily: 'monospace' }}>
         {pred.platform?.toUpperCase()} · @{pred.author || 'unknown'}
       </div>
-      <div style={{ fontSize: 14, color: '#d0d0e8', marginBottom: 12, paddingRight: 80, lineHeight: 1.4 }}>
-        {pred.title || 'Untitled'}
-      </div>
+      <a
+        href={pred.clip_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'block', fontSize: 14, color: '#d0d0e8', marginBottom: 12,
+          paddingRight: 80, lineHeight: 1.4, textDecoration: 'none', cursor: 'pointer',
+        }}
+        onMouseEnter={e => e.currentTarget.style.color='#5ac8fa'}
+        onMouseLeave={e => e.currentTarget.style.color='#d0d0e8'}
+      >
+        {pred.title || 'Untitled'} <span style={{ fontSize: 11, opacity: .5 }}>↗</span>
+      </a>
       <ScoreBar label="V-EYE AI"      value={pred.veye_score || 0}     color="#5ac8fa" />
       <ScoreBar label="Platform"      value={pred.platform_score || 0} color="#30d158" />
       <ScoreBar label="Final Score"   value={pred.final_score || 0}    color={tier.color} />
